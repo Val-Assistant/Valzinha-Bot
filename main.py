@@ -16,13 +16,13 @@ async def on_ready():
 async def on_message(message):
     if message.author == client.user:
         return
-    if "val" in message.content.lower():
+    if "val" in message.content.lower() and "oi" in message.content.lower():
         pos = [
             "Olá, tudo bem?",
             "Online!",
             "Val a disposição!",
             "Bom dia!",
-            "Olá, estou conectada"
+            "Olá, estou conectada!"
         ]
         await message.channel.send(pos[randrange(0, len(pos))])
     if "feliz aniversário" in message.content.lower():
@@ -32,11 +32,21 @@ async def on_message(message):
     if "piada" in message.content.lower():
         piadas = ["O que o pagodeiro foi fazer na igreja?\nfoi cantar pá-god",
               "Por que o Napoleão sempre era chamada para festas?\nPor que ele era bom-na-party",
-              "Você conhece a piada do ponêi?\nPô nem eu", "Qual é o rei dos queijos\n o reiqueijão",
+              "Você conhece a piada do pônei?\nPô nem eu", "Qual é o rei dos queijos\n o reiqueijão",
               "O que o pato falou pra pata?\nvem quá", "POr que a velhinha não tem relógio\nPor que ela era sem hora",
               "O que a xuxa foi fazer no bar?\nfoi beber ca sasha"]
         await message.channel.send(piadas[randrange(0, len(piadas))])
-        await message.channel.send("kkkkkkkkkk")
+        await message.channel.send(f"kkkkkkkkkk")
+    agressions = [
+        "boiola",
+        "viado",
+        "frouxo",
+        "baitola",
+        "seu macaco"
+    ]
+    for i in agressions:
+        if i in message.content.lower():
+            await message.channel.send("Puliça chegando... Meça suas palavras! Agressões deste porte não são permitidas nesse server!")
 
 @client.event
 async def on_member_join(member):
