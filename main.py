@@ -2,6 +2,7 @@ import os
 from random import randrange
 import discord
 from dotenv import load_dotenv
+from web_func import scrapping, previsao_do_tempo, covid_cases
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -31,12 +32,24 @@ async def on_message(message):
         await message.channel.send("kkkkkkkkkk")
     if "piada" in message.content.lower():
         piadas = ["O que o pagodeiro foi fazer na igreja?\nfoi cantar pá-god",
-              "Por que o Napoleão sempre era chamada para festas?\nPor que ele era bom-na-party",
+              "Por que o Napoleão sempre era chamado para festas?\nPor que ele era bom-na-party",
               "Você conhece a piada do pônei?\nPô nem eu", "Qual é o rei dos queijos\n o reiqueijão",
-              "O que o pato falou pra pata?\nvem quá", "POr que a velhinha não tem relógio\nPor que ela era sem hora",
+              "O que o pato falou pra pata?\nvem quá", "Por que a velhinha não tem relógio\nPor que ela era sem hora",
               "O que a xuxa foi fazer no bar?\nfoi beber ca sasha"]
         await message.channel.send(piadas[randrange(0, len(piadas))])
         await message.channel.send(f"kkkkkkkkkk")
+    if "número" in message.content.lower() and "aleatório" in message.content.lower():
+        await message.channel.send(str(randrange(0, 100)))
+    if "criador" in message.content.lower():
+        await message.channel.send("Cauê Alves, Github: @caue-alves, Email: caue.mendes.rodrigues.alves@gmail.com")
+    if "tempo" in message.content.lower():
+        await message.channel.send(previsao_do_tempo())
+    if "casos de covid" in message.content.lower():
+        await message.channel.send(covid_cases())
+    if "notícias" in message.content.lower():
+        await message.channel.send(scrapping())
+
+
     agressions = [
         "boiola",
         "viado",
