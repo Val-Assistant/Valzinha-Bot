@@ -12,6 +12,19 @@ client = discord.Client()
 @client.event
 async def on_ready():
     print(f'{client.user} has connected to Discord!')
+    canal = client.get_channel(int(os.getenv("ID_CANAL")))
+    await canal.send(f"Olá à todos, Val preparada pra mais um dia de trabalho ^-^")
+
+@client.event
+async def on_member_join(member):
+    print("novo membro")
+    svg = open("img/member_join.svg", 'r')
+    content = svg.read()
+    content.replace("Member Name", member.name)
+    svg2 = open("img/member_join.svg", "w")
+    svg2.write(content)
+    canal = client.get_channel(int(os.getenv("ID_CANAL")))
+    await canal.send(f"Olá {member.mention}, bem vindo ao server mais Top do BR!", file=discord.File("member_join.svg"))
 
 @client.event
 async def on_message(message):
@@ -36,7 +49,13 @@ async def on_message(message):
               "Você conhece a piada do pônei?\nPô nem eu", "Qual é o rei dos queijos\n o reiqueijão",
               "O que o pato falou pra pata?\nvem quá", "Por que a velhinha não tem relógio\nPor que ela era sem hora",
               "O que a xuxa foi fazer no bar?\nfoi beber ca sasha"]
-        await message.channel.send(piadas[randrange(0, len(piadas))])
+        img = [
+            discord.File("img/laugh.gif"),
+            discord.File("img/laugh2.gif"),
+            discord.File("img/laugh3.gif"),
+            discord.File("img/laugh4.gif")
+        ]
+        await message.channel.send(piadas[randrange(0, len(piadas))], file=img[randrange(0, len(img))])
         await message.channel.send(f"kkkkkkkkkk")
     if "número" in message.content.lower() and "aleatório" in message.content.lower():
         await message.channel.send(str(randrange(0, 100)))
@@ -46,10 +65,10 @@ async def on_message(message):
         await message.channel.send(previsao_do_tempo())
     if "casos de covid" in message.content.lower():
         await message.channel.send(covid_cases())
-    if "notícias" in message.content.lower():
+    if "notícia" in message.content.lower():
         await message.channel.send(scrapping())
-
-
+    if message.content.lower() == "?":
+        await message.channel.send(file=discord.File("img/sera.gif"))
     agressions = [
         "boiola",
         "viado",
@@ -60,12 +79,5 @@ async def on_message(message):
     for i in agressions:
         if i in message.content.lower():
             await message.channel.send("Puliça chegando... Meça suas palavras! Agressões deste porte não são permitidas nesse server!")
-
-@client.event
-async def on_member_join(member):
-    await member.create_dm()
-    await member.dm_channel.send(
-        f'Olá {member.name}, bem vindo ao Server mais top!!'
-    )
 
 client.run(TOKEN)
