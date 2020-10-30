@@ -22,7 +22,7 @@ def ProgramaDaVal2():
 async def on_ready():
     print(f'{client.user} has connected to Discord!')
     canal = client.get_channel(int(os.getenv("ID_CANAL")))
-    #await canal.send(f"Olá a todos, Val preparada pra mais um dia de trabalho ^-^")
+    await canal.send(f"Olá a todos, Val preparada pra mais um dia de trabalho ^-^")
     schedule.every().day.at("10:00").do(ProgramaDaVal)
     schedule.every().day.at("10:00").do(ProgramaDaVal2)
 
