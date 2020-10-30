@@ -3,17 +3,28 @@ from random import randrange
 import discord
 from dotenv import load_dotenv
 from web_func import scrapping, previsao_do_tempo, covid_cases
+from time import sleep
+import schedule
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 
 client = discord.Client()
 
+def ProgramaDaVal():
+    return scrapping()
+
+def ProgramaDaVal2():
+    sleep(20)
+    return previsao_do_tempo()
+
 @client.event
 async def on_ready():
     print(f'{client.user} has connected to Discord!')
     canal = client.get_channel(int(os.getenv("ID_CANAL")))
-    await canal.send(f"Olá à todos, Val preparada pra mais um dia de trabalho ^-^")
+    #await canal.send(f"Olá a todos, Val preparada pra mais um dia de trabalho ^-^")
+    schedule.every().day.at("10:00").do(ProgramaDaVal)
+    schedule.every().day.at("10:00").do(ProgramaDaVal2)
 
 @client.event
 async def on_member_join(member):
@@ -65,7 +76,7 @@ async def on_message(message):
         await message.channel.send(previsao_do_tempo())
     if "casos de covid" in message.content.lower():
         await message.channel.send(covid_cases())
-    if "notícia" in message.content.lower():
+    if "noticias" in message.content.lower():
         await message.channel.send(scrapping())
     if message.content.lower() == "?":
         await message.channel.send(file=discord.File("img/sera.gif"))
@@ -79,5 +90,7 @@ async def on_message(message):
     for i in agressions:
         if i in message.content.lower():
             await message.channel.send("Puliça chegando... Meça suas palavras! Agressões deste porte não são permitidas nesse server!")
+            AD = client.get_channel(int((os.getenv("AD_ID"))))
+            await AD.send(f"{message.author.mention} + 1 advertência")
 
 client.run(TOKEN)
