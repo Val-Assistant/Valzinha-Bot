@@ -94,3 +94,4 @@ async def on_message(message):
             await AD.send(f"{message.author.mention} + 1 advertência")
 
 client.run(TOKEN)
+
