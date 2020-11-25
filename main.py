@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 from web_func import scrapping, previsao_do_tempo, covid_cases
 from time import sleep
 import schedule
+from discord.utils import get
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -22,7 +23,7 @@ def ProgramaDaVal2():
 async def on_ready():
     print(f'{client.user} has connected to Discord!')
     canal = client.get_channel(int(os.getenv("ID_CANAL")))
-    await canal.send(f"Olá a todos, Val preparada pra mais um dia de trabalho ^-^")
+    #await canal.send(f"Olá a todos, Val preparada pra mais um dia de trabalho ^-^")
     schedule.every().day.at("10:00").do(ProgramaDaVal)
     schedule.every().day.at("10:00").do(ProgramaDaVal2)
 
@@ -39,6 +40,22 @@ async def on_member_join(member):
 
 @client.event
 async def on_message(message):
+    print(message.content.split()[0].lower())
+    if message.content.split()[0].lower() == "val":
+        print(message.content.split()[1].lower())
+        #if message.strip()[1].lower() == "adicionar-role" and len(message.strip()) == 4:
+         #   role = message.strip()[2]
+         #   user = discord.Member(message.strip()[3][1:])
+         #   role = get(user.server.roles, name=role)
+        if message.content.split()[1].lower() == "bicuda":
+            user=message.content.split()[2]
+            await message.channel.send(">" + message.author.mention + " deu uma bicuda em " + user + ", nossa!", file=discord.File("img/bico1.gif"))
+        if message.content.split()[1].lower() == "abraço":
+            user=message.content.split()[2]
+            await message.channel.send("> " + message.author.mention + " deu um abraço em " + user + ", nossa, que fofo!", file=discord.File("img/ab1.gif"))
+        if message.content.split()[1].lower() == "beijar":
+            user=message.content.split()[2]
+            await message.channel.send("> " + message.author.mention + " deu um beijo em " + user + ", meu deuuuuuuuuuuuuuuuussss :3", file=discord.File("img/bj1.gif"))
     if message.author == client.user:
         return
     if "val" in message.content.lower() and "oi" in message.content.lower():
@@ -94,4 +111,3 @@ async def on_message(message):
             await AD.send(f"{message.author.mention} + 1 advertência")
 
 client.run(TOKEN)
-
