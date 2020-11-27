@@ -1,7 +1,10 @@
+* {
+    font: 800 32px "Inter",BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
 h1 {
   text-align: left;
   margin-left: 0.5em;
-  font: 800 32px "Inter",BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
   padding-left: 0.5em;
 }
 
