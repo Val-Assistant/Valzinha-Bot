@@ -12,3 +12,8 @@ p {
   padding-left: 0.5em;
     font-size: 20px;
 }
+
+#but {
+    color:#7289da;
+    border: 0.1px;
+}
