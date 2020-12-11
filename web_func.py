@@ -7,7 +7,7 @@ def scrapping():
     noticias = BeautifulSoup(site.text, 'html.parser')
     for item in noticias.findAll('item')[:5]:
         final.append(f"{item.title.text}\n")
-    return "".join(final)
+    return "\n".join(final)
 
 def previsao_do_tempo():
     site = get('http://api.openweathermap.org/data/2.5/weather?lat=-29.6842&lon=-53.8069&appid=90215b527139cc03551eff4bb45ea00f&units=metric&lang=pt')
