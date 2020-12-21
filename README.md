@@ -4,7 +4,7 @@
 Val para Discord
 
 # Call Val
-Seu username é Val Uchiha#3318
+Seu username é Valzinha#3318
 
 # Setup:
 
@@ -15,25 +15,22 @@ Seu username é Val Uchiha#3318
 # Comandos:
 
 Roleplay:
+`beijar`, `abraço`, `bicuda`, `atirar`, `carinho`, `matar`, `comer`, `tapear`, `soco`, `chorar`, `gritar`, `morder`
+    
+Moderação:
+`sugerir`, `mute`, `avatar`, `limpar`, `trancar`, `destrancar`, `ban`, `kick`, `falar`
 
-* Bicuda
-```
-val bicuda <user>
-```
+Utilidades:
+`casos-de-covid`, `tempo`, `noticias`, `google`, `cronômetro`
+    
+Diversão:
+`piada`, `vidente`, `hentai`, `cara-coroa`, `easter-egg`, `yu-gi-oh`, `fodasse`, `laranjo`, `tv`, `bhcareca`, `pão`, `ado`, `gado`
+    
+NLP:
+Risadas, Feliz aniversário, `ræy`
 
-* Beijo
-```
-val beijar <user>
-```
+Economia:
+`carreira`, `trabalhar`, `money`, `apostar`
 
-* Abraço
-```
-val abraço <user>
-```
-
-* Tiro
-```
-val atirar <user>
-```
-
-> Em todos será exibido um gif abaixo do texto relacionado a respectiva ação
+Outros:
+`userinfo`, `info`, `criador`, `toc-toc`, `l-update`
