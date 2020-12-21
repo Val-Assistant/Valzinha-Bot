@@ -1,0 +1,6 @@
+discord.py
+datetime
+googlesearch-python
+youtube_dl
+svglib
+reportlab
