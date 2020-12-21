@@ -1,5 +1,4 @@
 <img align="right" class = "img" src="https://static.wikia.nocookie.net/naruto/images/5/5a/Naori.png/revision/latest?cb=20150404200700&path-prefix=pt-br" height=300px width=450px/>
-
 # Val Bot for Discord
 Val para Discord
 
